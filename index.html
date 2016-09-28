@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>What is more popular on Twitter right now?</title>
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    </head>
+    <body>
+        <div class="container">
+            <br/><br/><br/>
+            <section>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <h1>What is more popular on Twitter right now?</h1>
+                            <form id="find-popular" autocomplete="on" method="post" action="">
+                                <br/><p>
+                                    <input id="hashtag1" name="hashtag1" required="required" type="text" placeholder="Trend #1 -> e.g. #football or Metallica"/>
+                                </p><br/>
+                                <p style="font-size:20px;">
+                                    OR
+                                </p><br/>
+                                <p>
+                                    <input id="hashtag2" name="hashtag2" required="required" type="text" placeholder="Trend #2 -> e.g. #cricket or Chuck Norris" /> 
+                                </p><br/><br/>
+                                <p id="result-popular" class="result"></p>
+                                <p class="login button"> 
+                                    <input type="submit" value="Let's find out!" /> 
+								</p>
+                            </form>
+                        </div>
+                    </div>
+            </section>
+            <span style="text-align:center;">This is <strong>finals</strong> project (<a href="http://youtu.be/C8htZZk8syw">video submission</a>) for <a href="https://www.edx.org/course/introduction-computer-science-harvardx-cs50x">CS50x</a>. Source code is available on <a href="https://github.com/ankitaggarwal011/TwitterPopularity">GitHub</a>. </a></span>
+        </div>
+        <div id="loading" style="display:none"></div>
+        <script type="text/javascript">
+            document.getElementById("find-popular").addEventListener('submit', function (event) {
+                event.preventDefault();
+                document.getElementById("loading").style.display = 'initial';
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+                       if (xmlhttp.status == 200) {
+                           document.getElementById("result-popular").innerHTML = xmlhttp.responseText;
+                           document.getElementById("loading").style.display = 'none';
+                       }
+                       else {
+                           console.log("Status: " + xmlhttp.status);
+                       }
+                    }
+                    return false;
+                };
+                xmlhttp.open("POST", "php/result.php", true);
+                xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+                var data = "hashtag1=" + document.getElementById("hashtag1").value + "&hashtag2=" + document.getElementById("hashtag2").value;
+                xmlhttp.send(data);
+            });
+        </script>
+    </body>
+</html>
