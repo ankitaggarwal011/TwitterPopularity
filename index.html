@@ -1,35 +1,28 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<html lang="en" class="no-js">
     <head>
         <meta charset="UTF-8" />
-        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>What is more popular on Twitter right now?</title>
-        <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
     </head>
     <body>
         <div class="container">
-            <br/><br/><br/>
             <section>
                     <div id="wrapper">
-                        <div id="login" class="animate form">
+                        <div id="login">
                             <h1>What is more popular on Twitter right now?</h1>
                             <form id="find-popular" autocomplete="on" method="post" action="">
-                                <br/><p>
+                                <p>
                                     <input id="hashtag1" name="hashtag1" required="required" type="text" placeholder="Trend #1 -> e.g. #football or Metallica"/>
-                                </p><br/>
+                                </p>
                                 <p style="font-size:20px;">
                                     OR
-                                </p><br/>
+                                </p>
                                 <p>
                                     <input id="hashtag2" name="hashtag2" required="required" type="text" placeholder="Trend #2 -> e.g. #cricket or Chuck Norris" /> 
-                                </p><br/><br/>
-                                <p id="result-popular" class="result"></p>
+                                </p>
+                                <span id="result-popular" class="result"></span>
                                 <p class="login button"> 
                                     <input type="submit" value="Let's find out!" /> 
 								</p>
@@ -37,7 +30,7 @@
                         </div>
                     </div>
             </section>
-            <span style="text-align:center;">This is <strong>finals</strong> project (<a href="http://youtu.be/C8htZZk8syw">video submission</a>) for <a href="https://www.edx.org/course/introduction-computer-science-harvardx-cs50x">CS50x</a>. Source code is available on <a href="https://github.com/ankitaggarwal011/TwitterPopularity">GitHub</a>. </a></span>
+            <span class="note">This is <strong>finals</strong> project (<a href="http://youtu.be/C8htZZk8syw">video submission</a>) for <a href="https://www.edx.org/course/introduction-computer-science-harvardx-cs50x">CS50x</a>. Source code is available on <a href="https://github.com/ankitaggarwal011/TwitterPopularity">GitHub</a>. © 2012 Ankit Aggarwal</a></span>
         </div>
         <div id="loading" style="display:none"></div>
         <script type="text/javascript">
@@ -62,6 +55,15 @@
                 var data = "hashtag1=" + document.getElementById("hashtag1").value + "&hashtag2=" + document.getElementById("hashtag2").value;
                 xmlhttp.send(data);
             });
+        </script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-59109394-3', 'auto');
+            ga('send', 'pageview');
         </script>
     </body>
 </html>
